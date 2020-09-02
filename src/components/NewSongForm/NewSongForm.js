@@ -23,7 +23,7 @@ class NewSongForm extends Component {
 
   render() {
     return (
-      <form>
+      <form id="new-song-form">
         <fieldset>
           <legend>Add a song!</legend>
           <input type="text" id="song" placeholder="Song name" onChange={this.updateText}/>
