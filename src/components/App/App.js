@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Songs from '../Songs/Songs';
 import NewSongForm from '../NewSongForm/NewSongForm';
-import { getAllSongs, postNewSong } from '../../dataFetcher';
+import { getAllSongs, postNewSong, removeSongFromQueue } from '../../dataFetcher';
 
 class App extends Component {
   constructor() {
@@ -24,6 +24,14 @@ class App extends Component {
     this.setState({ songQueue: songs });
   }
 
+  moveToNextSong = async () => {
+    const songToRemove = this.state.songQueue.shift();
+    await removeSongFromQueue(songToRemove.id);
+    const songs = await getAllSongs();
+
+    this.setState({ songQueue: songs }); 
+  }
+
   render() {
     return (
       <div className="App">
@@ -33,7 +41,7 @@ class App extends Component {
         <div className="App-background">
           <main>
             <NewSongForm updatePlaylist={this.updatePlaylist} />
-            <Songs songs={this.state.songQueue} />
+            <Songs songs={this.state.songQueue} moveToNextSong={this.moveToNextSong} />
           </main>
         </div> 
       </div>

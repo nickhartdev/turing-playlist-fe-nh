@@ -1,10 +1,9 @@
 import React from 'react';
 
-const SongController = ( { changeSong } ) => {
-  
+const SongController = (props) => {
   return (
     <div>
-      <button>Next Song</button>
+      <button onClick={props.moveToNextSong}>Next Song</button>
     </div>
   );
 };
