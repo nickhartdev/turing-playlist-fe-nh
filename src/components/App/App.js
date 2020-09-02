@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Songs from '../Songs/Songs';
+import NewSongForm from '../NewSongForm/NewSongForm';
 import SongController from '../SongController/SongController';
 import { getAllSongs } from '../../dataFetcher';
 
@@ -25,6 +26,7 @@ class App extends Component {
         </header>
         <div className="App-background">
           <main>
+            <NewSongForm />
             <Songs songs={this.state.songQueue}/>
           </main>
         </div> 
