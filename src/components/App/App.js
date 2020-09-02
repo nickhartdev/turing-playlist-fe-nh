@@ -34,7 +34,6 @@ class App extends Component {
         <div className="App-background">
           <main>
             <NewSongForm updatePlaylist={this.updatePlaylist} />
-            <SongController />
             <Songs songs={this.state.songQueue} />
           </main>
         </div> 
