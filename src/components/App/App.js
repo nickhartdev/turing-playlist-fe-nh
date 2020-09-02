@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import SongController from '../SongController/SongController';
+import { getAllSongs } from '../../dataFetcher';
 
 class App extends Component {
   constructor() {
@@ -10,6 +11,10 @@ class App extends Component {
     }
   }
 
+  componentDidMount = async () => {
+    const songs = await getAllSongs();
+    this.setState({ songQueue: songs })
+  }
 
   render() {
     return (
