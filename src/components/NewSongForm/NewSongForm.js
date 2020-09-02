@@ -10,15 +10,25 @@ class NewSongForm extends Component {
     this.setState({ [e.target.id]: e.target.value })
   }
 
+  addSong = () => {
+    const song = {
+      songName: this.state.song,
+      artistName: this.state.artist,
+      link: this.state.link
+    }
+
+    this.props.updatePlaylist(song);
+  }
+
   render() {
     return (
       <form>
         <fieldset>
           <legend>Add a song!</legend>
-          <input type="text" id="song-name" placeholder="Song name" onChange={this.updateText}/>
-          <input type="text" id="artist-name" placeholder="Artist name" onChange={this.updateText}/>
+          <input type="text" id="song" placeholder="Song name" onChange={this.updateText}/>
+          <input type="text" id="artist" placeholder="Artist name" onChange={this.updateText}/>
           <input type="text" id="link" placeholder="Link" onChange={this.updateText}/>
-          <button>Add</button>
+          <button onClick={this.addSong}>Add</button>
         </fieldset>
       </form>
     )

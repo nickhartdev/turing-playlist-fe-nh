@@ -5,3 +5,15 @@ export const getAllSongs = () => {
     .then(res => res.json())
     .catch(error => console.error(error));
 }
+
+export const postNewSong = (song) => {
+  return fetch(baseUrl + 'playlist', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(song)
+  })
+    .then(res => res.json())
+    .catch(error => console.error(error));
+}

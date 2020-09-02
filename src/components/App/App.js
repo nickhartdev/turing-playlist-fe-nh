@@ -3,7 +3,7 @@ import './App.css';
 import Songs from '../Songs/Songs';
 import NewSongForm from '../NewSongForm/NewSongForm';
 import SongController from '../SongController/SongController';
-import { getAllSongs } from '../../dataFetcher';
+import { getAllSongs, postNewSong } from '../../dataFetcher';
 
 class App extends Component {
   constructor() {
@@ -18,6 +18,10 @@ class App extends Component {
     this.setState({ songQueue: songs })
   }
 
+  updatePlaylist = (song) => {
+    this.state.songQueue = [...this.state.songQueue, song];
+  }
+
   render() {
     return (
       <div className="App">
@@ -27,7 +31,7 @@ class App extends Component {
         <div className="App-background">
           <main>
             <NewSongForm />
-            <Songs songs={this.state.songQueue}/>
+            <Songs songs={this.state.songQueue} updatePlaylist={this.updatePlaylist}/>
           </main>
         </div> 
       </div>
