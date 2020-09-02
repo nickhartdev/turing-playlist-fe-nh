@@ -15,7 +15,6 @@ export const postNewSong = (song) => {
     body: JSON.stringify(song)
   })
     .then(res => res.json())
-    .then(value => console.log(value))
     .catch(error => console.error(error));
 }
 
@@ -23,6 +22,5 @@ export const removeSongFromQueue = (songId) => {
   fetch(`${baseUrl}/playlist/${songId}`, {
     method: 'DELETE'
   })
-    .then(statusCode => console.log(statusCode))
     .catch(error => console.error(error));
 }
