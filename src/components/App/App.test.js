@@ -9,7 +9,7 @@ jest.mock('../../dataFetcher.js');
 
 describe('App', () => {
   it('should allow the user to add a song', async () => {
-    getAllSongs.mockResolvedValue([
+    getAllSongs.mockResolvedValueOnce([
       {
         "songName": "Swear",
         "artistName": "Casiopea",
@@ -36,6 +36,39 @@ describe('App', () => {
       }
     ])
 
+    getAllSongs.mockResolvedValue([
+      {
+        songName: "Swear",
+        artistName: "Casiopea",
+        link: "https://www.youtube.com/watch?v=6GEI3PpXEAo&t=1771s",
+        id: 1,
+      },
+      {
+        songName: "Autumn Leaves",
+        artistName: "Bill Evans Trio",
+        link: "https://www.youtube.com/watch?v=r-Z8KuwI7Gc",
+        id: 2,
+      },
+      {
+        songName: "Fair Weather",
+        artistName: "Art Farmer",
+        link: "https://www.youtube.com/watch?v=8-jfsUusSDQ",
+        id: 3,
+      },
+      {
+        songName: "Django",
+        artistName: "The Modern Jazz Quartet",
+        link: "https://www.youtube.com/watch?v=wXnkD7_5vqM",
+        id: 4,
+      },
+      {
+        songName: "Africa",
+        artistName: "Toto",
+        link: "some link",
+        id: 5,
+      },
+    ]);
+
     render(<App />);
 
     const songNameField = screen.getByPlaceholderText('Song name');
@@ -49,8 +82,8 @@ describe('App', () => {
 
     fireEvent.click(addSongButton);
 
-    const newSongTitle = await waitFor(() => screen.getByText('Africa'));
+    const newSongInfo = await waitFor(() => screen.getByText('Africa by Toto'));
 
-    expect(newSongTitle).toBeInTheDocument();
+    expect(newSongInfo).toBeInTheDocument();
   })
 })
