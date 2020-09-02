@@ -1,7 +1,14 @@
 import React from 'react';
-import { render } from '@testing-library/react';
 import App from './App';
+import { render, fireEvent, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
 
-test('true should be true', () => {
-  expect(true).toEqual(true);
-});
+describe('App', () => {
+  it('should render without crashing', () => {
+    render(<App />);
+
+    const header = screen.getByText('Turing Playlist');
+
+    expect(header).toBeInTheDocument();
+  })
+})
