@@ -1,3 +1,19 @@
 input, button {
   color: black;
 }
+
+fieldset {
+  display: flex;
+  margin-top: 1em;
+  background: rgba(0, 0, 0, .6);
+  border: none;
+}
+
+fieldset > input {
+  margin: 1em 0;
+}
+
+fieldset > button {
+  margin: auto;
+  width: 100%;
+}
