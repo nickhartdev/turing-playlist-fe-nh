@@ -34,11 +34,13 @@ describe('Songs', () => {
 
     render(<Songs songs={songs}/>);
 
+    const header = screen.getByText('Your Playlist')
     const song1 = screen.getByText('Swear by Casiopea');
     const song2 = screen.getByText('Autumn Leaves by Bill Evans Trio');
     const song3 = screen.getByText('Fair Weather by Art Farmer');
     const song4 = screen.getByText('Django by The Modern Jazz Quartet');
 
+    expect(header).toBeInTheDocument();
     expect(song1).toBeInTheDocument();
     expect(song2).toBeInTheDocument();
     expect(song3).toBeInTheDocument();
