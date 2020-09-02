@@ -6,7 +6,7 @@ const Songs = (props) => {
     <div>
       <h1>Your Playlist</h1>
       {props.songs.map(song => {
-        return <Song song={song} />
+        return <Song song={song} key={song.id}/>
       })}
     </div>
   )
