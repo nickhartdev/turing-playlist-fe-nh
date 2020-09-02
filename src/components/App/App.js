@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import Songs from '../Songs/Songs';
 import NewSongForm from '../NewSongForm/NewSongForm';
-import SongController from '../SongController/SongController';
 import { getAllSongs, postNewSong } from '../../dataFetcher';
 
 class App extends Component {

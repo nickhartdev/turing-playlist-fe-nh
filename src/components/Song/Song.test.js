@@ -14,7 +14,7 @@ describe('Song', () => {
     render(<Song song={song}/>)
   
     const songInfo = screen.getByText('Africa by Toto');
-    const link = screen.getByText('Play');
+    const link = screen.getByText('Youtube Link');
   
     expect(songInfo).toBeInTheDocument();
     expect(link).toBeInTheDocument();

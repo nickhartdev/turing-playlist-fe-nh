@@ -7,7 +7,7 @@ const Song = (props) => {
   return (
     <div className="song-container">
       <p>{song.songName} by {song.artistName}</p>
-      <a href={song.link}>Play</a>
+      <a href={song.link}>Youtube Link</a>
     </div>
   )
 }
