@@ -18,8 +18,11 @@ class App extends Component {
     this.setState({ songQueue: songs })
   }
 
-  updatePlaylist = (song) => {
-    this.state.songQueue = [...this.state.songQueue, song];
+  updatePlaylist = async (song) => {
+    await postNewSong(song);
+    const songs = await getAllSongs();
+    
+    this.setState({ songQueue: songs });
   }
 
   render() {
@@ -30,8 +33,8 @@ class App extends Component {
         </header>
         <div className="App-background">
           <main>
-            <NewSongForm />
-            <Songs songs={this.state.songQueue} updatePlaylist={this.updatePlaylist}/>
+            <NewSongForm updatePlaylist={this.updatePlaylist} />
+            <Songs songs={this.state.songQueue} />
           </main>
         </div> 
       </div>

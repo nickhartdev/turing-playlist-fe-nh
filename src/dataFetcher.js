@@ -15,5 +15,6 @@ export const postNewSong = (song) => {
     body: JSON.stringify(song)
   })
     .then(res => res.json())
+    .then(value => console.log(value))
     .catch(error => console.error(error));
 }

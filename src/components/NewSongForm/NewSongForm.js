@@ -29,7 +29,7 @@ class NewSongForm extends Component {
           <input type="text" id="song" placeholder="Song name" onChange={this.updateText}/>
           <input type="text" id="artist" placeholder="Artist name" onChange={this.updateText}/>
           <input type="text" id="link" placeholder="Link" onChange={this.updateText}/>
-          <button onClick={this.addSong}>Add</button>
+          <button onClick={this.addSong} type="button">Add</button>
         </fieldset>
       </form>
     )
