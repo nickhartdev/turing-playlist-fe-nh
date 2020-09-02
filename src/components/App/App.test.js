@@ -74,7 +74,7 @@ describe('App', () => {
     const songNameField = screen.getByPlaceholderText('Song name');
     const artistNameField = screen.getByPlaceholderText('Artist name');
     const linkField = screen.getByPlaceholderText('Link');
-    const addSongButton = screen.getByRole('button');
+    const addSongButton = screen.getByRole('button', {name: 'Add'});
 
     fireEvent.change(songNameField, { target: { value: 'Africa' } })
     fireEvent.change(artistNameField, { target: { value: 'Toto' } })
