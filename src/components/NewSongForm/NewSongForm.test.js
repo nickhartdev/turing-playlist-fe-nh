@@ -1,6 +1,6 @@
 import React from 'react';
 import NewSongForm from './NewSongForm';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
 describe('NewSongForm', () => {
@@ -16,5 +16,21 @@ describe('NewSongForm', () => {
     expect(artistNameField).toBeInTheDocument();
     expect(linkField).toBeInTheDocument();
     expect(addSongButton).toBeInTheDocument();
+  })
+
+  it('should accept text inputs', () => {
+    render(<NewSongForm />);
+
+    const songNameField = screen.getByPlaceholderText('Song name');
+    const artistNameField = screen.getByPlaceholderText('Artist name');
+    const linkField = screen.getByPlaceholderText('Link');
+
+    fireEvent.change(songNameField, { target: { value: 'Africa'} })
+    fireEvent.change(artistNameField, { target: { value: 'Toto'} })
+    fireEvent.change(linkField, { target: { value: 'some link'} })
+
+    expect(songNameField.value).toBe('Africa');
+    expect(artistNameField.value).toBe('Toto');
+    expect(linkField.value).toBe('some link');
   })
 })
